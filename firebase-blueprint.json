@@ -1,0 +1,82 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account profile and settings",
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string", "maxLength": 100 },
+        "email": { "type": "string", "maxLength": 120 },
+        "plan": { "type": "string", "maxLength": 50 },
+        "createdAt": { "type": "string", "description": "Server timestamp of creation" }
+      },
+      "required": ["email"]
+    },
+    "Folder": {
+      "title": "Folder",
+      "description": "Directory folder for grouping files",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "createdAt": { "type": "string", "description": "Server timestamp of creation" }
+      },
+      "required": ["name"]
+    },
+    "FileDoc": {
+      "title": "FileDoc",
+      "description": "Uploaded file document metadata",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "maxLength": 150 },
+        "folderId": { "type": "string", "maxLength": 128 },
+        "size": { "type": "string", "maxLength": 50 },
+        "createdAt": { "type": "string", "description": "Server timestamp of creation" }
+      },
+      "required": ["name", "size"]
+    },
+    "Note": {
+      "title": "Note",
+      "description": "User notes and study documentation",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "minLength": 1, "maxLength": 150 },
+        "content": { "type": "string", "maxLength": 5000 },
+        "createdAt": { "type": "string", "description": "Server timestamp of creation" }
+      },
+      "required": ["title"]
+    },
+    "TeamMember": {
+      "title": "TeamMember",
+      "description": "Collaborators and team member roster",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "role": { "type": "string", "maxLength": 80 },
+        "createdAt": { "type": "string", "description": "Server timestamp of creation" }
+      },
+      "required": ["name"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile records"
+    },
+    "/users/{userId}/folders/{folderId}": {
+      "schema": "Folder",
+      "description": "User file folders"
+    },
+    "/users/{userId}/files/{fileId}": {
+      "schema": "FileDoc",
+      "description": "User file metadata records"
+    },
+    "/users/{userId}/notes/{noteId}": {
+      "schema": "Note",
+      "description": "User notes records"
+    },
+    "/users/{userId}/teamMembers/{memberId}": {
+      "schema": "TeamMember",
+      "description": "User team members roster"
+    }
+  }
+}

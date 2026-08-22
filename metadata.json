@@ -1,0 +1,6 @@
+{
+  "name": "Assignment Hub",
+  "description": "A modern college assignment website for viewing and tracking coursework across Mathematics, C++, Python, DSA, and Artificial Intelligence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
